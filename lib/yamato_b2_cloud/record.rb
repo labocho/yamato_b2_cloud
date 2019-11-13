@@ -18,15 +18,19 @@ module YamatoB2Cloud
       shipping_date: 5,
       receiver_phone_number: 9,
       receiver_postal_code: 11,
-      receiver_address: 12,
+      receiver_line_1: 12,
+      receiver_line_2: 13,
       receiver_name: 16,
       sender_phone_number: 20,
       sender_postal_code: 22,
-      sender_address: 23,
+      sender_line_1: 23,
+      sender_line_2: 24,
       sender_name: 25,
       description: 28,
       billing_customer_code: 40,
       shipping_fee_management_number: 42,
+      collect_amount_within_tax: 34,
+      collect_amount_tax: 35,
     }.freeze
 
     ATTRUBUTES = ATTRIBUTE_NUMBERS.keys.freeze
@@ -38,12 +42,13 @@ module YamatoB2Cloud
     validates :shipping_date, presence: true
     validates :receiver_phone_number, :sender_phone_number, presence: true, format: /\A(\d{10,12})\z/
     validates :receiver_postal_code, :sender_postal_code, presence: true, format: /\A(\d{7})\z/
-    validates :receiver_address, :sender_address, presence: true
+    validates :receiver_line_1, :sender_line_1, presence: true
     validates :receiver_name, :sender_name, presence: true
     validates :description, presence: true
     validates :billing_customer_code, presence: true, format: /\A(\d{10,12})\z/
     validates :shipping_fee_management_number, presence: true, format: /\A(\d{2})\z/
     validate :validate_type
+    validate :validate_collect_amount
 
     def self.headers
       @headers ||= ATTRIBUTE_NUMBERS.each_with_object([]) do |(attr, n), a|
@@ -60,6 +65,10 @@ module YamatoB2Cloud
     end
 
     def to_a
+      unless valid?
+        raise "Cannot convert invalid record to array: #{inspect}\n#{errors.full_messages}"
+      end
+
       ATTRIBUTE_NUMBERS.each_with_object([]) do |(attr, number), a|
         v = send(attr)
 
@@ -98,5 +107,25 @@ module YamatoB2Cloud
       end
     end
     # rubocop:enable Style/GuardClause
+
+    def validate_collect_amount
+      if type == TYPE.COLLECT
+        unless collect_amount_within_tax.is_a?(Integer) && collect_amount_within_tax > 0
+          errors.add(:collect_amount_within_tax, :invalid)
+        end
+
+        unless collect_amount_tax.is_a?(Integer) && collect_amount_tax > 0
+          errors.add(:collect_amount_tax, :invalid)
+        end
+      else
+        unless collect_amount_within_tax.nil?
+          errors.add(:collect_amount_within_tax, :invalid)
+        end
+
+        unless collect_amount_tax.nil?
+          errors.add(:collect_amount_tax, :invalid)
+        end
+      end
+    end
   end
 end
