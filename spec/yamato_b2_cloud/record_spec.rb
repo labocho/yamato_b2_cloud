@@ -23,6 +23,7 @@ module YamatoB2Cloud
         shipping_fee_management_number: "01",
         collect_amount_within_tax: 12345,
         collect_amount_tax: 123,
+        note_to_deliverer: "記事",
       )
     }
 
@@ -202,7 +203,7 @@ module YamatoB2Cloud
           nil,
           nil,
           nil,
-          nil,
+          "記事",
           "12345",
           "123",
           nil,

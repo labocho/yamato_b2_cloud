@@ -39,6 +39,7 @@ module YamatoB2Cloud
       description: 28,
       billing_customer_code: 40,
       shipping_fee_management_number: 42,
+      note_to_deliverer: 33,
       collect_amount_within_tax: 34,
       collect_amount_tax: 35,
     }.freeze
