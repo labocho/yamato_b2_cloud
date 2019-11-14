@@ -10,12 +10,22 @@ module YamatoB2Cloud
       COLLECT: 2,
     )
 
+    DELIVERY_TIME = Enum.new(
+      FROM_08_TO_12: "0812",
+      FROM_14_TO_16: "1416",
+      FROM_16_TO_18: "1618",
+      FROM_18_TO_20: "1820",
+      FROM_19_TO_21: "1921",
+    )
+
     # 下記資料での "No."。-1 した値が CSV での index になる。
     # B2 クラウド 送り状発行データレイアウト 入出力用
     # https://bmypage.kuronekoyamato.co.jp/bmypage/pdf/new_exchange1.pdf
     ATTRIBUTE_NUMBERS = {
       type: 2,
       shipping_date: 5,
+      delivery_date: 6,
+      delivery_time: 7,
       receiver_phone_number: 9,
       receiver_postal_code: 11,
       receiver_line_1: 12,
@@ -72,10 +82,15 @@ module YamatoB2Cloud
       ATTRIBUTE_NUMBERS.each_with_object([]) do |(attr, number), a|
         v = send(attr)
 
+        if v.nil?
+          a[number - 1] = nil
+          next
+        end
+
         a[number - 1] = case attr
-        when :type
+        when :type, :delivery_time
           v.value.to_s
-        when :shipping_date
+        when :shipping_date, :delivery_date
           format_date(v)
         when :receiver_phone_number, :sender_phone_number
           Phonenumber.hyphenate(v)
@@ -102,8 +117,16 @@ module YamatoB2Cloud
         errors.add(:type, :invalid)
       end
 
+      unless delivery_time.nil? || DELIVERY_TIME.include?(delivery_time)
+        errors.add(:delivery_time, :invalid)
+      end
+
       unless shipping_date.is_a?(Date)
         errors.add(:shipping_date, :invalid)
+      end
+
+      unless delivery_date.nil? || delivery_date.is_a?(Date)
+        errors.add(:delivery_date, :invalid)
       end
     end
     # rubocop:enable Style/GuardClause
