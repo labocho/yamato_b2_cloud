@@ -7,7 +7,7 @@ GIT
 PATH
   remote: .
   specs:
-    yamato_b2_cloud (0.1.1)
+    yamato_b2_cloud (0.1.2)
       activemodel (>= 5)
       phonenumber
 
