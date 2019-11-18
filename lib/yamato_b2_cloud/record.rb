@@ -18,6 +18,12 @@ module YamatoB2Cloud
       FROM_19_TO_21: "1921",
     )
 
+    PRINT_NUMBER_OF_BOXES_FRAME = Enum.new(
+      FRAME: 1,
+      NONE: 2,
+      FRAME_AND_NUMBER: 3,
+    )
+
     # 下記資料での "No."。-1 した値が CSV での index になる。
     # B2 クラウド 送り状発行データレイアウト 入出力用
     # https://bmypage.kuronekoyamato.co.jp/bmypage/pdf/new_exchange1.pdf
@@ -37,6 +43,7 @@ module YamatoB2Cloud
       sender_line_2: 24,
       sender_name: 25,
       description: 28,
+      print_number_of_boxes_frame: 39,
       billing_customer_code: 40,
       shipping_fee_management_number: 42,
       note_to_deliverer: 33,
@@ -89,7 +96,7 @@ module YamatoB2Cloud
         end
 
         a[number - 1] = case attr
-        when :type, :delivery_time
+        when :type, :delivery_time, :print_number_of_boxes_frame
           v.value.to_s
         when :shipping_date, :delivery_date
           format_date(v)
