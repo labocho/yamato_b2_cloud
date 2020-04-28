@@ -49,6 +49,16 @@ module YamatoB2Cloud
       note_to_deliverer: 33,
       collect_amount_within_tax: 34,
       collect_amount_tax: 35,
+      search_key_title_1: 75,
+      search_key_1: 76,
+      search_key_title_2: 77,
+      search_key_2: 78,
+      search_key_title_3: 79,
+      search_key_3: 80,
+      search_key_title_4: 81,
+      search_key_4: 82,
+      search_key_title_5: 83,
+      search_key_5: 84,
     }.freeze
 
     ATTRUBUTES = ATTRIBUTE_NUMBERS.keys.freeze
