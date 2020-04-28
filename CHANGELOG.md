@@ -1,3 +1,7 @@
+# v0.1.3 (2020-04-28)
+
+* support search_key_title_*, search_key_*.
+
 # v0.1.2 (2019-11-18)
 
 * support print_number_of_boxes_frame.
