@@ -1,6 +1,6 @@
 require "date"
 require "active_model"
-require "phonenumber"
+require "phonenumber_jp"
 require "yamato_b2_cloud/enum"
 
 module YamatoB2Cloud
@@ -111,7 +111,7 @@ module YamatoB2Cloud
         when :shipping_date, :delivery_date
           format_date(v)
         when :receiver_phone_number, :sender_phone_number
-          Phonenumber.hyphenate(v)
+          PhonenumberJp.hyphenate(v)
         when :receiver_postal_code, :sender_postal_code
           format_postal_code(v)
         else

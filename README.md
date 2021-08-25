@@ -8,7 +8,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem "yamato_b2_cloud", git: "https://github.com/laboho/yamato_b2_cloud.git"
-gem "phonenumber", git: "https://github.com/labocho/phonenumber.git"
+gem "phonenumber_jp", git: "https://github.com/labocho/phonenumber_jp.git"
 ```
 
 And then execute:
