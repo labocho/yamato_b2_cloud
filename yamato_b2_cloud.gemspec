@@ -2,6 +2,7 @@ lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "yamato_b2_cloud/version"
 
+# rubocop:disable Gemspec/RequiredRubyVersion
 Gem::Specification.new do |spec|
   spec.name          = "yamato_b2_cloud"
   spec.version       = YamatoB2Cloud::VERSION
@@ -28,6 +29,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r(^exe/)) {|f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = ">= 2.0"
+
   spec.add_dependency "activemodel", ">= 5"
   spec.add_dependency "phonenumber_jp"
 
@@ -36,3 +39,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rubocop", "~> 0.76"
 end
+# rubocop:enable Gemspec/RequiredRubyVersion

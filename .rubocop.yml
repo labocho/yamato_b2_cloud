@@ -51,7 +51,7 @@ Naming/HeredocDelimiterNaming:
 Naming/PredicateName:
   Enabled: false
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 
 Style/Alias:
