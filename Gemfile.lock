@@ -15,7 +15,7 @@ GIT
 PATH
   remote: .
   specs:
-    yamato_b2_cloud (0.1.4)
+    yamato_b2_cloud (0.1.5)
       activemodel (>= 5)
       phonenumber_jp (~> 0.1.2)
       windows_31j_punctuation (~> 0.1.0)
