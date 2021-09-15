@@ -1,15 +1,24 @@
 GIT
   remote: https://github.com/labocho/phonenumber_jp
-  revision: 7e448096d08564f06dea8570e097f3d616fb4f55
+  revision: a63c64ac4425494b37eeafc83b56ca759ea56c0a
+  tag: v0.1.2
   specs:
     phonenumber_jp (0.1.2)
+
+GIT
+  remote: https://github.com/socioart/windows_31j_punctuation
+  revision: 867f14c0d411e099edde7211264866f9786e6629
+  tag: v0.1.0
+  specs:
+    windows_31j_punctuation (0.1.0)
 
 PATH
   remote: .
   specs:
     yamato_b2_cloud (0.1.4)
       activemodel (>= 5)
-      phonenumber_jp
+      phonenumber_jp (~> 0.1.2)
+      windows_31j_punctuation (~> 0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -74,6 +83,7 @@ DEPENDENCIES
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 0.76)
+  windows_31j_punctuation!
   yamato_b2_cloud!
 
 BUNDLED WITH

@@ -6,3 +6,4 @@ module YamatoB2Cloud
 end
 
 require "yamato_b2_cloud/record"
+require "yamato_b2_cloud/writer"
