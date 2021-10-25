@@ -5,6 +5,7 @@ module YamatoB2Cloud
   class Writer
     UNSUPPORTED_CHARACTER_CONVERSIONS ={
       "𠷡" => "百合",
+      "𠮷" => "吉",
     }.each {|k, v|
       k.freeze
       v.freeze
