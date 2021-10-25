@@ -15,7 +15,7 @@ GIT
 PATH
   remote: .
   specs:
-    yamato_b2_cloud (0.1.5)
+    yamato_b2_cloud (0.1.6)
       activemodel (>= 5)
       phonenumber_jp (~> 0.1.2)
       windows_31j_punctuation (~> 0.1.0)
@@ -72,7 +72,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
