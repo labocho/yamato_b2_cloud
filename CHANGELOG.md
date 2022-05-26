@@ -1,3 +1,7 @@
+# v0.1.7 (2022-05-26)
+
+* support NO-BREAK SPACE (U+00A0).
+
 # v0.1.6 (2021-10-25)
 
 * support 𠮷 (U+20BB7).
