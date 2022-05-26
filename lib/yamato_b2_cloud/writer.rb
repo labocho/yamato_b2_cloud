@@ -6,6 +6,7 @@ module YamatoB2Cloud
     UNSUPPORTED_CHARACTER_CONVERSIONS ={
       "𠷡" => "百合",
       "𠮷" => "吉",
+      "\u{00a0}" => " ",
     }.each {|k, v|
       k.freeze
       v.freeze

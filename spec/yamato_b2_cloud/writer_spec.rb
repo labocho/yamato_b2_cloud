@@ -73,6 +73,11 @@ module YamatoB2Cloud
         expect(decoded.each.first["receiver_name"]).to eq "foo\u{ff5e}bar"
       end
 
+      it "converts NO-BREAK SPACE (U+00A0) to SPACE (U+0020)" do
+        record.receiver_name = "foo\u{00a0}bar"
+        expect(decoded.each.first["receiver_name"]).to eq "foo\u{0020}bar"
+      end
+
       it "converts 𠷡 (U+20DE1) to 百合" do
         record.receiver_name = "𠷡野"
         expect(decoded.each.first["receiver_name"]).to eq "百合野"
