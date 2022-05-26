@@ -3,7 +3,7 @@ require "windows_31j_punctuation"
 
 module YamatoB2Cloud
   class Writer
-    UNSUPPORTED_CHARACTER_CONVERSIONS ={
+    UNSUPPORTED_CHARACTER_CONVERSIONS = {
       "𠷡" => "百合",
       "𠮷" => "吉",
       "\u{00a0}" => " ",
@@ -31,7 +31,7 @@ module YamatoB2Cloud
 
     private
     def convert_before_encode(s)
-      s = Windows31jPunctuation.replace(csv.string) # 見た目の似た記号を統一 https://y-kawaz.hatenadiary.org/entry/20101112/1289554290
+      s = Windows31jPunctuation.replace(s) # 見た目の似た記号を統一 https://y-kawaz.hatenadiary.org/entry/20101112/1289554290
       s = avoid_wave_dash_problem(s)
       s = convert_unsupported_characters(s)
       s
