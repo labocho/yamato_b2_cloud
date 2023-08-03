@@ -1,3 +1,7 @@
+# v0.1.8 (2023-08-03)
+
+* support 繫 (U+7E6B).
+
 # v0.1.7 (2022-05-26)
 
 * support NO-BREAK SPACE (U+00A0).
