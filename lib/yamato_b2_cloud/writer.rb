@@ -7,6 +7,7 @@ module YamatoB2Cloud
       "𠷡" => "百合",
       "𠮷" => "吉",
       "\u{00a0}" => " ",
+      "繫" => "繋",
     }.each {|k, v|
       k.freeze
       v.freeze
