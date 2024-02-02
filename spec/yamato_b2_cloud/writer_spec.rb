@@ -92,6 +92,11 @@ module YamatoB2Cloud
         record.receiver_name = "繫幸"
         expect(decoded.each.first["receiver_name"]).to eq "繋幸"
       end
+
+      it "converts 䑓 (U+4453) to 臺 (U+81FA)" do
+        record.receiver_name = "中䑓"
+        expect(decoded.each.first["receiver_name"]).to eq "中臺"
+      end
     end
   end
 end
