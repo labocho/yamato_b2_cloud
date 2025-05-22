@@ -10,6 +10,12 @@ module YamatoB2Cloud
       COLLECT: 2,
     )
 
+    REFRIGERATED = Enum.new(
+      NONE: 0,
+      FREEZED: 1,
+      REFRIGERATED: 2,
+    )
+
     DELIVERY_TIME = Enum.new(
       FROM_08_TO_12: "0812",
       FROM_14_TO_16: "1416",
@@ -29,6 +35,7 @@ module YamatoB2Cloud
     # https://bmypage.kuronekoyamato.co.jp/bmypage/pdf/new_exchange1.pdf
     ATTRIBUTE_NUMBERS = {
       type: 2,
+      refrigerated: 3,
       shipping_date: 5,
       delivery_date: 6,
       delivery_time: 7,
@@ -106,7 +113,7 @@ module YamatoB2Cloud
         end
 
         a[number - 1] = case attr
-        when :type, :delivery_time, :print_number_of_boxes_frame
+        when :type, :refrigerated, :delivery_time, :print_number_of_boxes_frame
           v.value.to_s
         when :shipping_date, :delivery_date
           format_date(v)

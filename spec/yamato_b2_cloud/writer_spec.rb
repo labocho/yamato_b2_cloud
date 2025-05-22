@@ -6,6 +6,7 @@ module YamatoB2Cloud
     let(:record) {
       Record.new(
         type: Record::TYPE.COLLECT,
+        refrigerated: Record::REFRIGERATED.REFRIGERATED,
         shipping_date: Date.new(2019, 11, 13),
         delivery_date: Date.new(2019, 11, 14),
         delivery_time: Record::DELIVERY_TIME.FROM_08_TO_12,
@@ -58,8 +59,8 @@ module YamatoB2Cloud
 
       it {
         should eq <<~CSV.encode("cp932").gsub("\n", "\r\n")
-          ,type,,,shipping_date,delivery_date,delivery_time,,receiver_phone_number,,receiver_postal_code,receiver_line_1,receiver_line_2,,,receiver_name,,,,sender_phone_number,,sender_postal_code,sender_line_1,sender_line_2,sender_name,,,description,,,,,note_to_deliverer,collect_amount_within_tax,collect_amount_tax,,,,print_number_of_boxes_frame,billing_customer_code,,shipping_fee_management_number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,search_key_title_1,search_key_1,search_key_title_2,search_key_2,search_key_title_3,search_key_3,search_key_title_4,search_key_4,search_key_title_5,search_key_5
-          ,2,,,2019/11/13,2019/11/14,0812,,080-1234-5678,,123-4567,送り先住所1,送り先住所2,,,送り先名前,,,,059-111-2222,,234-5678,依頼主住所1,依頼主住所2,依頼主名前,,,品名,,,,,記事,12345,123,,,,2,0592223333,,01,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,検索キー1,sk1,検索キー2,sk2,検索キー3,sk3,検索キー4,sk4,検索キー5,sk5
+          ,type,refrigerated,,shipping_date,delivery_date,delivery_time,,receiver_phone_number,,receiver_postal_code,receiver_line_1,receiver_line_2,,,receiver_name,,,,sender_phone_number,,sender_postal_code,sender_line_1,sender_line_2,sender_name,,,description,,,,,note_to_deliverer,collect_amount_within_tax,collect_amount_tax,,,,print_number_of_boxes_frame,billing_customer_code,,shipping_fee_management_number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,search_key_title_1,search_key_1,search_key_title_2,search_key_2,search_key_title_3,search_key_3,search_key_title_4,search_key_4,search_key_title_5,search_key_5
+          ,2,2,,2019/11/13,2019/11/14,0812,,080-1234-5678,,123-4567,送り先住所1,送り先住所2,,,送り先名前,,,,059-111-2222,,234-5678,依頼主住所1,依頼主住所2,依頼主名前,,,品名,,,,,記事,12345,123,,,,2,0592223333,,01,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,検索キー1,sk1,検索キー2,sk2,検索キー3,sk3,検索キー4,sk4,検索キー5,sk5
         CSV
       }
 
