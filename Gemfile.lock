@@ -15,7 +15,7 @@ GIT
 PATH
   remote: .
   specs:
-    yamato_b2_cloud (0.1.10)
+    yamato_b2_cloud (0.1.11)
       activemodel (>= 5)
       csv (~> 3.3.5)
       phonenumber_jp (~> 0.1.2)
